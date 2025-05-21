@@ -1,20 +1,19 @@
 
 import spacy
 import subprocess
-import importlib
+import importlib.util
 import re
 import dateparser
 
-# Ensure spaCy model is available
 def load_spacy_model():
     try:
         return spacy.load("en_core_web_sm")
     except OSError:
-        subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
-        importlib.invalidate_caches()
+        subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"], check=True)
         return spacy.load("en_core_web_sm")
 
 nlp = load_spacy_model()
+
 
 DAYS = {
     "monday": "Monday",
