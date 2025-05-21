@@ -2,8 +2,6 @@
 import spacy
 import subprocess
 import importlib.util
-import re
-import dateparser
 
 def load_spacy_model():
     try:
